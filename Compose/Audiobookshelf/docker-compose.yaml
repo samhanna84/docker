@@ -1,1 +1,11 @@
-
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    ports:
+      - 13378:80
+    volumes:
+      - /Your Path Here/Books:/books
+      - /Your Path Here/Podcasts:/podcasts
+      - ./config:/config
+      - ./metadata:/metadata
+    restart: always
