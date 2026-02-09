@@ -1,0 +1,51 @@
+services:
+
+  postgres:
+
+    image: postgres
+
+    container_name: synapse-postgres
+
+    restart: always
+
+    ports:
+
+      - 5432:5432
+
+    volumes:
+
+     - /mnt/media5/Matrix/postgres:/var/lib/postgresql/data
+
+    environment:
+
+     - POSTGRES_PASSWORD=PASSWORD
+
+     - POSTGRES_USER=synapse
+
+     - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
+
+
+  synapse:
+
+    image: matrixdotorg/synapse
+
+    restart: always
+
+    container_name: synapse
+
+    depends_on: 
+      - postgres
+
+    ports:
+
+     - 8008:8008
+
+    environment:
+
+     - SYNAPSE_SERVER_NAME=matrix.player4.xyz
+
+     - SYNAPSE_REPORT_STATS=no
+
+    volumes:
+
+     - /mnt/media5/Matrix/data:/data
