@@ -1,1 +1,10 @@
-
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    network_mode: "host"
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - /path/to/media #please change the path to your media
+    restart: always
