@@ -6,5 +6,5 @@ services:
     volumes:
       - ./config:/config
       - ./cache:/cache
-      - /path/to/media #please change the path to your media
+      - /path/to/media:/media #please change the path to your media
     restart: always
